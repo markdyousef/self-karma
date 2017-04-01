@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import Paper from 'material-ui/Paper/Paper';
 
 export default class Journal extends Component {
     constructor() {
@@ -7,9 +8,9 @@ export default class Journal extends Component {
     }
     render() {
         return(
-            <div>
+            <Paper>
                 JOURNAL
-            </div>
+            </Paper>
         );
     }
 }
