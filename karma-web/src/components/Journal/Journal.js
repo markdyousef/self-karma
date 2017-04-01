@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
-import Paper from 'material-ui/Paper/Paper';
 import styled from 'styled-components';
+import Profile from '../Profile';
 
 const Container = styled.div`
     position: absolute;
@@ -12,12 +12,6 @@ const Container = styled.div`
     justify-content: center;
 `;
 
-const paperStyle = {
-    height: '80%',
-    width: '80%',
-    maxWidth: '400px',
-    textAlign: 'center',
-}
 
 export default class Journal extends Component {
     constructor() {
@@ -27,7 +21,7 @@ export default class Journal extends Component {
     render() {
         return(
             <Container>
-                <Paper style={paperStyle} zDepth={1} />
+                <Profile />
             </Container>
         );
     }
