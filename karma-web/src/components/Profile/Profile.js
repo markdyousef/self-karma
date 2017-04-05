@@ -24,7 +24,7 @@ const Title = styled.span`
 `;
 
 const Close = ({ onClick }) => (
-    <IconButton><NavigationClose /></IconButton>
+    <IconButton onClick={onClick}><NavigationClose /></IconButton>
 );
 
 const Save = ({ onClick }) => (
@@ -36,6 +36,7 @@ export default class Profile extends Component {
     constructor() {
         super();
         this.state = {
+            initialState: {},
             name: '',
             heroes: [],
             quotes: [],
@@ -45,10 +46,13 @@ export default class Profile extends Component {
             hasChanged: false
         }
     }
+    componentDidMount() {
+        this.setState({ initialState: this.state });
+    }
     handleTouchTap = () => {
         const { isEdit, hasChanged } = this.state;
 
-        if (hasChanged) return;
+        if (hasChanged) return this.setState({ hasChanged: true});
 
         this.setState({ isEdit: !isEdit })
 
@@ -63,7 +67,12 @@ export default class Profile extends Component {
 
         let newState = Object.assign({}, this.state);
         newState[key] = value;
+        newState.hasChanged = true;
         this.setState(newState)
+    }
+    onClose = () => {
+        const { initialState } = this.state;
+        this.setState(initialState);
     }
     render() {
         const { name, isEdit, hasChanged } = this.state;
@@ -73,7 +82,7 @@ export default class Profile extends Component {
                     <AppBar
                         title={<Title>Cool</Title>}
                         onTitleTouchTap={this.handleTouchTap}
-                        iconElementLeft={(isEdit) ? <Close /> : null }
+                        iconElementLeft={(isEdit) ? <Close onClick={this.onClose} /> : null }
                         iconElementRight={(isEdit && hasChanged) ? <Save /> : null}
                     />
                     <InnerContainer>
