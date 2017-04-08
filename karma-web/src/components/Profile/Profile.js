@@ -17,6 +17,7 @@ const InnerContainer = styled.div`
     display: flex;
     justify-content: center;
     height: 400px;
+    max-width: 400px;
 `;
 
 const Title = styled.span`
