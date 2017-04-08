@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import TextField from 'material-ui/TextField';
@@ -32,8 +33,22 @@ const Save = ({ onClick }) => (
     <FlatButton label="Save" />
 );
 
+type State = {
+    initialState: ?Object,
+    name: ?string,
+    heroes: ?Array<Object>,
+    hasChanged: boolean,
+    isEdit: boolean
+}
+
+type Props = {
+
+}
+
 
 export default class Profile extends Component {
+    props: Props
+    state: State
     constructor() {
         super();
         this.state = {
@@ -50,21 +65,28 @@ export default class Profile extends Component {
     componentDidMount() {
         this.setState({ initialState: this.state });
     }
+    componentWillReceiveProps(nextProps:Object) {
+        const { data: { loading, profile } } = nextProps;
+
+        if (loading) return;
+
+        this.setState({
+            name: profile.name
+        })
+    }
     handleTouchTap = () => {
         const { isEdit, hasChanged } = this.state;
 
         if (hasChanged) return this.setState({ hasChanged: true});
 
         this.setState({ isEdit: !isEdit })
-
-
     }
-    handleChange = (key, value) => {
+    handleChange = (key:string, value:string) => {
         const states = Object.keys(this.state);
 
-        const field = states.findIndex(fieldKey => fieldKey === key)
+        const field = states.findIndex(fieldKey => fieldKey === key) > 0;
 
-        if (!!field) return;
+        if (!field) return;
 
         let newState = Object.assign({}, this.state);
         newState[key] = value;
@@ -77,7 +99,6 @@ export default class Profile extends Component {
     }
     render() {
         const { name, isEdit, hasChanged } = this.state;
-        console.log(this.props);
         return(
             <Container>
                 <Card>
