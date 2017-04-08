@@ -1,6 +1,6 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import Profile from '../Profile';
+import Profile from '../../containers/ProfileContainer';
 
 const Container = styled.div`
     position: absolute;

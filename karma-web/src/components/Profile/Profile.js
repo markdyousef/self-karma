@@ -77,6 +77,7 @@ export default class Profile extends Component {
     }
     render() {
         const { name, isEdit, hasChanged } = this.state;
+        console.log(this.props);
         return(
             <Container>
                 <Card>

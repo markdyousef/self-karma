@@ -7,6 +7,7 @@
     "graphql-tag": "^2.0.0",
     "material-ui": "^0.17.1",
     "react": "^15.4.2",
+    "react-apollo": "^1.0.1",
     "react-dom": "^15.4.2",
     "react-tap-event-plugin": "^2.0.1",
     "styled-components": "^1.4.4"
@@ -19,6 +20,9 @@
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.4.1",
+    "flow": "^0.2.3",
+    "flow-bin": "^0.43.1",
+    "flow-typed": "^2.0.0",
     "react-scripts": "0.9.5"
   },
   "scripts": {
