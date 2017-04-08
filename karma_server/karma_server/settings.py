@@ -38,22 +38,33 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'journal.apps.JournalConfig',
-    'graphene_django'
+    'graphene_django',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
+
+# CORS
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+    'localhost:8000'
+)
+
+# graphql
 GRAPHENE = {
     'SCHEMA': 'journal.schema.schema'
 }
+
 
 ROOT_URLCONF = 'karma_server.urls'
 
